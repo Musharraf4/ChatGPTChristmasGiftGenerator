@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
 
+
 export default function Home() {
   const [gender, setGender] = useState("man");
   const [age, setAge] = useState(30);
@@ -10,10 +11,10 @@ export default function Home() {
   const [hobbies, setHobbies] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState();
-
+  
   async function onSubmit(event) {
     event.preventDefault();
-
+    
     if (loading) return;
     setLoading(true);
     try {
@@ -32,7 +33,8 @@ export default function Home() {
           new Error(`Request failed with status ${response.status}`)
         );
       }
-
+     
+    
       setResult(data.result);
     } catch (error) {
       alert("Something went wrong please try later");
@@ -44,12 +46,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
+        <title>AI Gift Generator</title>
         <link rel="icon" href="/dog.png" />
       </Head>
 
       <main className={styles.main}>
-        <h3>Christmas gift generator 🎁 💡</h3>
+        <h3>AI Gift Generator 🎁 💡</h3>
         <form onSubmit={onSubmit}>
           <label>For who is the gift?</label>
           <select
@@ -114,6 +116,7 @@ export default function Home() {
           />
         )}
       </main>
+      
     </div>
   );
 }
