@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
 
-
 export default function Home() {
   const [gender, setGender] = useState("man");
   const [age, setAge] = useState(30);
@@ -14,7 +13,6 @@ export default function Home() {
   
   async function onSubmit(event) {
     event.preventDefault();
-    
     if (loading) return;
     setLoading(true);
     try {
@@ -42,15 +40,15 @@ export default function Home() {
       setLoading(false);
     }
   }
-
   return (
     <div>
       <Head>
         <title>AI Gift Generator</title>
         <link rel="icon" href="/dog.png" />
       </Head>
-
+      <header className={styles.footer}><b><span style={{color:'#10a37f'}}>By</span> Musharraf Riaz</b></header>
       <main className={styles.main}>
+       
         <h3>AI Gift Generator 🎁 💡</h3>
         <form onSubmit={onSubmit}>
           <label>For who is the gift?</label>
@@ -110,13 +108,16 @@ export default function Home() {
           </div>
         )}
         {!loading && result && (
-          <div
+         <> <div
             className={styles.result}
             dangerouslySetInnerHTML={{ __html: result }}
           />
+          <br/>
+          <br/>
+          <br/>
+          </>
         )}
-      </main>
-      
+     </main>
     </div>
   );
 }
